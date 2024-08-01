@@ -7,8 +7,14 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-
-        System.out.println("Hello world!");
+        int[] arr0 = {7,2,3,4,0,0,2,6};
+        int[] arr1 = {7,2,3,4,2,0,5,6};
+        System.out.println(countEvens(arr0));
+        System.out.println(countEvens(arr1));
+        System.out.println(deltaMaxMin(arr0));
+        System.out.println(deltaMaxMin(arr1));
+        System.out.println(zeroZero(arr0));
+        System.out.println(zeroZero(arr1));
     }
 
     /**
@@ -30,14 +36,34 @@ public class Main {
      * большим и самым маленьким элементами переданного
      * не пустого массива.
      * @param arr Массив целых чисел
-     * @return Количество четных чисел в массиве
+     * @return разница между самым большим и самым маленьким
+     * элементами переданного не пустого массива.
      */
     public static int deltaMaxMin(int[] arr){
         int max,min;
         max = arr[0];
-        for (int i = 1; i < ; i++) {
-
+        min = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > max) max = arr[i];
+            if (arr[i] < min) min = arr[i];
         }
-        return;
+        return max-min;
+    }
+
+    /**
+     * 3.Написать функцию, возвращающую истину, если в переданном
+     * массиве есть два соседних элемента, с нулевым значением.
+     * @param arr Массив целых чисел.
+     * @return Булево значение
+     */
+    public static boolean zeroZero(int[] arr){
+        boolean flag = false;
+        for (int i = 0; i < (arr.length-1); i++) {
+            if ((arr[i] == 0) && (arr[i + 1] == 0)) {
+                flag = true;
+                break;
+            }
+        }
+        return flag;
     }
 }
